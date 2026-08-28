@@ -26,12 +26,19 @@ public class CategoryService {
 
     @Transactional
     public CategoryResponse createCategory(CategoryRequest request) {
+        log.info(
+                "Creating category '{}' with {} position templates",
+                request.name(),
+                request.positionCounts().size()
+        );
+
         Category category = new Category();
         category.setName(request.name());
         category.setPlayersPerTeam(request.playersPerTeam());
         category.setAllowedSurfaces(request.allowedSurfaces());
 
         Category saved = categoryRepository.save(category);
+        log.debug("Category persisted with id={}", saved.getId());
 
         for (Map.Entry<Position, Integer> entry : request.positionCounts().entrySet()) {
             PositionTemplate template = new PositionTemplate();
@@ -41,6 +48,11 @@ public class CategoryService {
             positionTemplateRepository.save(template);
         }
 
+        log.info(
+                "Category '{}' created successfully with id={}",
+                saved.getName(),
+                saved.getId()
+        );
         return toResponse(saved);
     }
 
