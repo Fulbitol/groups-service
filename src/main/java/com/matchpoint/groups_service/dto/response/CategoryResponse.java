@@ -1,4 +1,4 @@
-package com.matchpoint.groups_service.dto;
+package com.matchpoint.groups_service.dto.response;
 
 import java.util.List;
 

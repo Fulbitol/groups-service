@@ -1,5 +1,6 @@
 package com.matchpoint.groups_service.domain;
 
+import com.matchpoint.groups_service.domain.enums.Position;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

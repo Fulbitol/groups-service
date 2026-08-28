@@ -1,6 +1,6 @@
-package com.matchpoint.groups_service.dto;
+package com.matchpoint.groups_service.dto.request;
 
-import com.matchpoint.groups_service.domain.Position;
+import com.matchpoint.groups_service.domain.enums.Position;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;

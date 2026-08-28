@@ -1,7 +1,7 @@
 package com.matchpoint.groups_service.controller;
 
-import com.matchpoint.groups_service.dto.CategoryRequest;
-import com.matchpoint.groups_service.dto.CategoryResponse;
+import com.matchpoint.groups_service.dto.request.CategoryRequest;
+import com.matchpoint.groups_service.dto.response.CategoryResponse;
 import com.matchpoint.groups_service.service.CategoryService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
