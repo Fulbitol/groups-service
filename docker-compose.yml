@@ -1,0 +1,17 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: groups-db
+    environment:
+      POSTGRES_DB: groups_db
+      POSTGRES_USER: groups_user
+      POSTGRES_PASSWORD: groups_pass
+      TZ: UTC
+      PGTZ: UTC
+    ports:
+      - "5432:5432"
+    volumes:
+      - groups_pgdata:/var/lib/postgresql/data
+
+volumes:
+  groups_pgdata:
