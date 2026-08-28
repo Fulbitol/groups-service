@@ -1,10 +1,13 @@
 package com.matchpoint.groups_service.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.matchpoint.groups_service.domain.Category;
-import com.matchpoint.groups_service.domain.Position;
+import com.matchpoint.groups_service.domain.enums.Position;
 import com.matchpoint.groups_service.domain.PositionTemplate;
-import com.matchpoint.groups_service.dto.CategoryRequest;
-import com.matchpoint.groups_service.dto.CategoryResponse;
+import com.matchpoint.groups_service.dto.request.CategoryRequest;
+import com.matchpoint.groups_service.dto.response.CategoryResponse;
 import com.matchpoint.groups_service.repository.CategoryRepository;
 import com.matchpoint.groups_service.repository.PositionTemplateRepository;
 import org.springframework.stereotype.Service;
@@ -14,6 +17,8 @@ import java.util.Map;
 
 @Service
 public class CategoryService {
+
+    private static final Logger log = LoggerFactory.getLogger(CategoryService.class);
 
     private final CategoryRepository categoryRepository;
     private final PositionTemplateRepository positionTemplateRepository;
