@@ -80,6 +80,18 @@
 			<version>3.1.0</version>
 			<scope>compile</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-core</artifactId>
+			<version>13.5.0</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-database-postgresql</artifactId>
+			<version>13.5.0</version>
+			<scope>compile</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -128,11 +140,6 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<configuration>
-					<!-- Sin esto, la JVM que levanta Surefire usa el timezone
-					     default del SO (America/Buenos_Aires en Windows), que
-					     el driver JDBC de Postgres/Debian reciente no reconoce
-					     como alias válido -> falla la conexión en tests que
-					     levantan el ApplicationContext (@SpringBootTest). -->
 					<argLine>@{argLine} -Duser.timezone=UTC</argLine>
 				</configuration>
 			</plugin>
@@ -141,14 +148,12 @@
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>0.8.12</version>
 				<executions>
-					<!-- Instrumenta el código antes de correr los tests -->
 					<execution>
 						<id>prepare-agent</id>
 						<goals>
 							<goal>prepare-agent</goal>
 						</goals>
 					</execution>
-					<!-- Genera el reporte HTML/XML después de "mvn test" -->
 					<execution>
 						<id>report</id>
 						<phase>test</phase>
@@ -156,9 +161,6 @@
 							<goal>report</goal>
 						</goals>
 					</execution>
-					<!-- Falla el build si el coverage cae debajo del umbral.
-					     Arranca en 40% porque recién estamos sumando tests;
-					     lo vamos subiendo a medida que cubrimos más services. -->
 					<execution>
 						<id>jacoco-check</id>
 						<phase>verify</phase>
